@@ -1,3 +1,9 @@
+import MovieCarousel from "@/components/MovieCarousel";
+
 export default function Home() {
-  return <main></main>;
+  return (
+    <main>
+      <MovieCarousel></MovieCarousel>
+    </main>
+  );
 }
