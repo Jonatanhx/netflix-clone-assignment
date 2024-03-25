@@ -1,6 +1,6 @@
 import { HomeIcon, MagnifyingGlassIcon } from "@heroicons/react/16/solid";
 
-export default function Header() {
+export default function Navbar() {
   return (
     <header className="bg-neutral-900 flex">
       <h1 className="text-3xl text-red-700 font-bold p-8">Netflix</h1>
