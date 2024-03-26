@@ -1,39 +1,33 @@
-"use client";
 import Image from "next/image";
-import { useState } from "react";
-import movies from "../movies.json";
+import Link from "next/link";
+import movieData from "../data/movieData";
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
 
 export default function RecommendedCarousel() {
-  const [data, setData] = useState(movies);
-
   return (
     <Carousel>
       <CarouselContent>
-        {data
+        {movieData
           .filter((item) => !item.isTrending)
-          .map((item, index) => (
+          .map((item) => (
             <CarouselItem
               className="sm:basis-1/4 md:basis-1/3 lg:basis-1/5 relative w-[50vh] h-[60vh] sm:h-[40vh] md:h-[50vh] lg:h-[50vh]"
-              key={index}
+              key={item.slug}
             >
               <div className="absolute inset-0">
-                <Image
-                  src={item.thumbnail}
-                  alt={item.title}
-                  quality={5}
-                  priority
-                  fill
-                ></Image>
+                <Link key={item.title} href={`/movie/${item.slug}`}>
+                  <Image
+                    src={item.thumbnail}
+                    alt={item.title}
+                    quality={5}
+                    priority
+                    fill
+                  ></Image>
+                </Link>
               </div>
             </CarouselItem>
           ))}
       </CarouselContent>
-
-      {/*       <CarouselPrevious />
-      <CarouselNext /> */}
     </Carousel>
   );
 }
-
-//Importera carousel autoplay från embla carousel plugin?

@@ -21,7 +21,7 @@ export default function Navbar() {
           <HomeIcon className="size-11 text-white"></HomeIcon>
         </Link>
 
-        <Link href="/Bookmarks">
+        <Link href="/bookmarks">
           <BookmarkIcon className="size-11 text-white flex"></BookmarkIcon>
         </Link>
         <MagnifyingGlassIcon className="size-11 text-white flex"></MagnifyingGlassIcon>
