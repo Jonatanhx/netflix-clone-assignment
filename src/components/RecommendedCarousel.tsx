@@ -1,10 +1,18 @@
+"use client";
+import { BookmarkContext } from "@/contexts/BookmarkContext";
 import { BookmarkIcon } from "@heroicons/react/16/solid";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
 import movieData from "../data/movieData";
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
 
 export default function RecommendedCarousel() {
+  const bookmarkContext = useContext(BookmarkContext);
+  if (!bookmarkContext) {
+    return null;
+  }
+  const { addToBookmarks } = bookmarkContext;
   return (
     <Carousel>
       <CarouselContent>
@@ -25,7 +33,10 @@ export default function RecommendedCarousel() {
                     fill
                   ></Image>
                 </Link>
-                <div className="absolute top-2 right-2">
+                <div
+                  className="absolute top-2 right-2 z-20 cursor-pointer"
+                  onClick={() => addToBookmarks(item)}
+                >
                   <BookmarkIcon className="size-16 text-red-700"></BookmarkIcon>
                 </div>
               </div>
