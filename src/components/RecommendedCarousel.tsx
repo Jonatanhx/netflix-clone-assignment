@@ -1,3 +1,4 @@
+import { BookmarkIcon } from "@heroicons/react/16/solid";
 import Image from "next/image";
 import Link from "next/link";
 import movieData from "../data/movieData";
@@ -14,7 +15,7 @@ export default function RecommendedCarousel() {
               className="sm:basis-1/4 md:basis-1/3 lg:basis-1/5 relative w-[50vh] h-[60vh] sm:h-[40vh] md:h-[50vh] lg:h-[50vh]"
               key={item.slug}
             >
-              <div className="absolute inset-0">
+              <div className="relative w-full h-full">
                 <Link key={item.title} href={`/movie/${item.slug}`}>
                   <Image
                     src={item.thumbnail}
@@ -24,6 +25,9 @@ export default function RecommendedCarousel() {
                     fill
                   ></Image>
                 </Link>
+                <div className="absolute top-2 right-2">
+                  <BookmarkIcon className="size-16 text-red-700"></BookmarkIcon>
+                </div>
               </div>
             </CarouselItem>
           ))}
