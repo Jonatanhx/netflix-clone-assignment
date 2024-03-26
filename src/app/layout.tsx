@@ -1,3 +1,4 @@
+import { BookmarkProvider } from "@/contexts/BookmarkContext";
 import type { Metadata } from "next";
 import Navbar from "../components/Navbar";
 import "./globals.css";
@@ -13,11 +14,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="bg-neutral-700">
-        <Navbar></Navbar>
-        {children}
-      </body>
-    </html>
+    <BookmarkProvider>
+      <html lang="en">
+        <body className="bg-neutral-700">
+          <Navbar></Navbar>
+          {children}
+        </body>
+      </html>
+    </BookmarkProvider>
   );
 }

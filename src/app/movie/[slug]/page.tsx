@@ -1,3 +1,10 @@
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import Image from "next/image";
 import movieData from "../../../../src/data/movieData";
 
 export async function generateStaticParams() {
@@ -32,14 +39,18 @@ export default function MoviePage({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <div>
-      <h1>{movie.title}</h1>
-      <p>Year: {movie.year}</p>
-      <p>Rating: {movie.rating}</p>
-      <p>Actors: {movie.actors.join(", ")}</p>
-      <p>Genre: {movie.genre}</p>
-      <p>{movie.synopsis}</p>
-      <img src={movie.thumbnail} alt={movie.title} />
-    </div>
+    <main className="flex flex-col md:flex-row">
+      <Image src={movie.thumbnail} width={200} height={200} alt={movie.title} />
+      <Card>
+        <CardHeader>
+          <CardTitle>{movie.title}</CardTitle>
+          <p>{movie.year}</p>
+          <p>{movie.genre}</p>
+          <p>Rated {movie.rating}</p>
+          <p>Features: {movie.actors.join(", ")}</p>
+          <CardDescription>{movie.synopsis}</CardDescription>
+        </CardHeader>
+      </Card>
+    </main>
   );
 }
