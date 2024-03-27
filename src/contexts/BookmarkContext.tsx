@@ -9,8 +9,7 @@ interface Movie {
 
 interface BookmarkContextType {
   bookmarkedMovies: Movie[];
-  addToBookmarks: (movie: Movie) => void;
-  removeFromBookmarks: (movieSlug: string) => void;
+  toggleBookmark: (movie: Movie) => void;
 }
 
 export const BookmarkContext = createContext<BookmarkContextType | null>(null);
@@ -29,34 +28,35 @@ export const BookmarkProvider = ({
     }
   }, []);
 
-  const addToBookmarks = (movie: Movie) => {
+  const toggleBookmark = (movie: Movie) => {
+    console.log("toggled bookmark");
     setBookmarkedMovies((prevBookmarks) => {
-      const updatedBookmarks = [...prevBookmarks, movie];
-      localStorage.setItem(
-        "bookmarkedMovies",
-        JSON.stringify(updatedBookmarks)
+      const movieIndex = prevBookmarks.findIndex(
+        (item) => item.slug === movie.slug
       );
-      return updatedBookmarks;
-    });
-  };
-
-  const removeFromBookmarks = (movieSlug: string) => {
-    setBookmarkedMovies((prevBookmarks) => {
-      const updatedBookmarks = prevBookmarks.filter(
-        (item) => item.slug !== movieSlug
-      );
-      localStorage.setItem(
-        "bookmarkedMovies",
-        JSON.stringify(updatedBookmarks)
-      );
-      return updatedBookmarks;
+      if (movieIndex === -1) {
+        const updatedBookmarks = [...prevBookmarks, movie];
+        localStorage.setItem(
+          "bookmarkedMovies",
+          JSON.stringify(updatedBookmarks)
+        );
+        return updatedBookmarks;
+      } else {
+        const updatedBookmarks = [
+          ...prevBookmarks.slice(0, movieIndex),
+          ...prevBookmarks.slice(movieIndex + 1),
+        ];
+        localStorage.setItem(
+          "bookmarkedMovies",
+          JSON.stringify(updatedBookmarks)
+        );
+        return updatedBookmarks;
+      }
     });
   };
 
   return (
-    <BookmarkContext.Provider
-      value={{ bookmarkedMovies, addToBookmarks, removeFromBookmarks }}
-    >
+    <BookmarkContext.Provider value={{ bookmarkedMovies, toggleBookmark }}>
       {children}
     </BookmarkContext.Provider>
   );

@@ -15,7 +15,7 @@ export default function TrendingCarousel() {
   if (!bookmarkContext) {
     return null;
   }
-  const { addToBookmarks } = bookmarkContext;
+  const { toggleBookmark } = bookmarkContext;
 
   return (
     <Carousel>
@@ -39,7 +39,7 @@ export default function TrendingCarousel() {
                 </Link>
                 <div
                   className="absolute top-2 right-2 z-20 cursor-pointer"
-                  onClick={() => addToBookmarks(item)}
+                  onClick={() => toggleBookmark(item)}
                 >
                   <BookmarkIcon className="size-16 text-red-700"></BookmarkIcon>
                 </div>
