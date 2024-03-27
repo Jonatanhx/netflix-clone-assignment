@@ -1,9 +1,6 @@
 import { Switch } from "@/components/ui/switch";
-import {
-  BookmarkIcon,
-  HomeIcon,
-  MagnifyingGlassIcon,
-} from "@heroicons/react/16/solid";
+import { HomeIcon, MagnifyingGlassIcon } from "@heroicons/react/16/solid";
+import { BookmarkPlusIcon } from "lucide-react";
 import Link from "next/link";
 
 export default function Navbar() {
@@ -22,7 +19,7 @@ export default function Navbar() {
         </Link>
 
         <Link href="/bookmarks">
-          <BookmarkIcon className="size-11 text-white flex"></BookmarkIcon>
+          <BookmarkPlusIcon className="size-11 text-white flex"></BookmarkPlusIcon>
         </Link>
         <MagnifyingGlassIcon className="size-11 text-white flex"></MagnifyingGlassIcon>
       </div>
