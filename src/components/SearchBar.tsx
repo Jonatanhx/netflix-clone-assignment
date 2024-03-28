@@ -30,13 +30,13 @@ export default function SearchBar() {
   return (
     <div className="flex items-center">
       {showInput ? (
-        <form onSubmit={handleSubmit} className="relative">
+        <form onSubmit={handleSubmit} className="relative w-full max-w-md">
           <input
             type="text"
             value={searchTerm}
             onChange={handleInputChange}
-            className="bg-white text-black px-4 py-2 rounded-md transition-all duration-300 ease-in-out"
-            placeholder="Search movies..."
+            className="bg-white text-black px-4 py-2 rounded-md transition-all duration-300 ease-in-out w-full"
+            placeholder="Search..."
           />
           <button
             type="submit"
