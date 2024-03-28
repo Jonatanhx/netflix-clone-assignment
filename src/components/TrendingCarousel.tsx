@@ -2,11 +2,11 @@
 import { BookmarkContext } from "@/contexts/BookmarkContext";
 import movieData from "@/data/movieData";
 
-import { BookmarkIcon } from "@heroicons/react/16/solid";
 import Image from "next/image";
 import Link from "next/link";
 import { useContext, useState } from "react";
 import movies from "../movies.json";
+import BookmarkButton from "./BookmarkButton";
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
 
 export default function TrendingCarousel() {
@@ -15,7 +15,7 @@ export default function TrendingCarousel() {
   if (!bookmarkContext) {
     return null;
   }
-  const { toggleBookmark } = bookmarkContext;
+  const { toggleBookmark, bookmarkedMovies } = bookmarkContext;
 
   return (
     <Carousel>
@@ -37,12 +37,12 @@ export default function TrendingCarousel() {
                     fill
                   ></Image>
                 </Link>
-                <div
-                  className="absolute top-2 right-2 z-20 cursor-pointer"
+                <BookmarkButton
+                  isBookmarked={bookmarkedMovies.some(
+                    (m) => m.slug === item.slug
+                  )}
                   onClick={() => toggleBookmark(item)}
-                >
-                  <BookmarkIcon className="size-16 text-red-700"></BookmarkIcon>
-                </div>
+                />
               </div>
             </CarouselItem>
           ))}

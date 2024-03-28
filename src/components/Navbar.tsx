@@ -1,15 +1,14 @@
 import { Switch } from "@/components/ui/switch";
-import {
-  BookmarkIcon,
-  HomeIcon,
-  MagnifyingGlassIcon,
-} from "@heroicons/react/16/solid";
+import { HomeIcon, MagnifyingGlassIcon } from "@heroicons/react/16/solid";
+import { BookmarkPlusIcon } from "lucide-react";
 import Link from "next/link";
 
 export default function Navbar() {
   return (
     <header className="bg-neutral-900 flex">
-      <h1 className="text-3xl text-red-700 font-bold p-8">Netflix</h1>
+      <Link href="/">
+        <h1 className="text-3xl text-red-700 font-bold m-8">Netflix</h1>
+      </Link>
       <div className="flex flex-row">
         <h1 className="text-white text-2xl mt-9 mr-4">Beta: </h1>
         <div className="mt-11">
@@ -22,7 +21,7 @@ export default function Navbar() {
         </Link>
 
         <Link href="/bookmarks">
-          <BookmarkIcon className="size-11 text-white flex"></BookmarkIcon>
+          <BookmarkPlusIcon className="size-11 text-white flex"></BookmarkPlusIcon>
         </Link>
         <MagnifyingGlassIcon className="size-11 text-white flex"></MagnifyingGlassIcon>
       </div>
