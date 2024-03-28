@@ -1,8 +1,9 @@
+"use client";
 import { Switch } from "@/components/ui/switch";
-import { HomeIcon, MagnifyingGlassIcon } from "@heroicons/react/16/solid";
+import { HomeIcon } from "@heroicons/react/16/solid";
 import { BookmarkPlusIcon } from "lucide-react";
 import Link from "next/link";
-
+import SearchBar from "./SearchBar";
 export default function Navbar() {
   return (
     <header className="bg-neutral-900 flex">
@@ -23,7 +24,8 @@ export default function Navbar() {
         <Link href="/bookmarks">
           <BookmarkPlusIcon className="size-11 text-white flex"></BookmarkPlusIcon>
         </Link>
-        <MagnifyingGlassIcon className="size-11 text-white flex"></MagnifyingGlassIcon>
+
+        <SearchBar></SearchBar>
       </div>
     </header>
   );
