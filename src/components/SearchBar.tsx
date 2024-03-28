@@ -1,4 +1,3 @@
-// SearchBar.tsx
 import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
@@ -15,7 +14,7 @@ export default function SearchBar() {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setShowInput(false);
-    router.push(`/search/${searchTerm}`);
+    router.push(`/search/${encodeURIComponent(searchTerm)}`);
   };
 
   const handleSearchClick = () => {
@@ -30,19 +29,19 @@ export default function SearchBar() {
             type="text"
             value={searchTerm}
             onChange={handleInputChange}
-            className="bg-gray-800 text-white px-4 py-2 rounded-md transition-all duration-300 ease-in-out"
+            className="bg-white text-black px-4 py-2 rounded-md transition-all duration-300 ease-in-out"
             placeholder="Search movies..."
           />
           <button
             type="submit"
             className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white"
           >
-            <MagnifyingGlassIcon className="h-6 w-6" />
+            <MagnifyingGlassIcon className="size-9 text-black" />
           </button>
         </form>
       ) : (
         <div className="cursor-pointer" onClick={handleSearchClick}>
-          <MagnifyingGlassIcon className="h-6 w-6 text-white" />
+          <MagnifyingGlassIcon className="size-11 text-white" />
         </div>
       )}
     </div>

@@ -1,19 +1,18 @@
 "use client";
 import Image from "next/image";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import movieData from "../../../data/movieData";
 
 export default function SearchResults() {
   const [searchTerm, setSearchTerm] = useState("");
-  const params = useParams();
+  const searchParams = useSearchParams();
   const router = useRouter();
 
   useEffect(() => {
-    if (typeof params.searchTerm === "string") {
-      setSearchTerm(params.searchTerm);
-    }
-  }, [params.searchTerm]);
+    const term = searchParams.get("searchTerm") || "";
+    setSearchTerm(term);
+  }, [searchParams]);
 
   const filteredMovies = movieData.filter((movie) =>
     movie.title.toLowerCase().includes(String(searchTerm).toLowerCase())
@@ -36,7 +35,6 @@ export default function SearchResults() {
                 alt={movie.title}
                 width={640}
                 height={360}
-                className="w-full h-64 object-cover mb-2 rounded-md"
               />
               <h3 className="text-lg font-bold">{movie.title}</h3>
               <p className="text-gray-400">{movie.genre}</p>

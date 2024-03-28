@@ -6,7 +6,7 @@ import Link from "next/link";
 import SearchBar from "./SearchBar";
 export default function Navbar() {
   return (
-    <header className="bg-neutral-900 flex">
+    <header className="bg-[#0A0A0A] flex">
       <Link href="/">
         <h1 className="text-3xl text-red-700 font-bold m-8">Netflix</h1>
       </Link>
