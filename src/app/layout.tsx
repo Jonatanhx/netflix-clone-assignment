@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <BookmarkProvider>
       <html lang="en">
-        <body className="bg-neutral-700">
+        <body className="bg-[#0E0E0E]">
           <Navbar></Navbar>
           {children}
         </body>
