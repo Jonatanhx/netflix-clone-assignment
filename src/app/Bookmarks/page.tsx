@@ -17,9 +17,9 @@ export default function Bookmarks() {
       <h1 className="text-2xl font-bold mb-4 text-white">Bookmarked Movies</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {bookmarkedMovies.map((item) => (
-          <Link key={item.title} href={`/movie/${item.slug}`}>
-            <div className="relative border-solid" key={item.slug}>
-              <div className="relative">
+          <div className="relative border-solid" key={item.slug}>
+            <div className="relative">
+              <Link key={item.title} href={`/movie/${item.slug}`}>
                 <Image
                   src={item.thumbnail}
                   width={320}
@@ -29,16 +29,16 @@ export default function Bookmarks() {
                   priority
                   className="object-cover w-full h-full"
                 ></Image>
-                <BookmarkButton
-                  isBookmarked={bookmarkedMovies.some(
-                    (m) => m.slug === item.slug
-                  )}
-                  onClick={() => toggleBookmark(item)}
-                />
-              </div>
-              <h3 className="text-white font-bold p-2">{item.title}</h3>
+              </Link>
+              <BookmarkButton
+                isBookmarked={bookmarkedMovies.some(
+                  (m) => m.slug === item.slug
+                )}
+                onClick={() => toggleBookmark(item)}
+              />
             </div>
-          </Link>
+            <h3 className="text-white font-bold p-2">{item.title}</h3>
+          </div>
         ))}
       </div>
     </main>

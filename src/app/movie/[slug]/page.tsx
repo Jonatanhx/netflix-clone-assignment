@@ -24,13 +24,22 @@ export default function MoviePage({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <main className="flex flex-col md:flex-row">
-      <Image src={movie.thumbnail} width={200} height={200} alt={movie.title} />
+    <main className="flex flex-col justify-center">
+      <div className="flex flex-row">
+        <div className="flex-1"></div>
+        <Image
+          src={movie.thumbnail}
+          width={640}
+          height={320}
+          alt={movie.title}
+        />
+        <div className="flex-1"></div>
+      </div>
       <BookmarkButton
         isBookmarked={bookmarkedMovies.some((m) => m.slug === movie.slug)}
         onClick={() => toggleBookmark(movie)}
       />
-      <Card>
+      <Card className="bg-[#0E0E0E] text-white">
         <CardHeader>
           <CardTitle>{movie.title}</CardTitle>
           <p>{movie.year}</p>
