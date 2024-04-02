@@ -19,6 +19,7 @@ export default function RecommendedCarousel() {
       <CarouselContent>
         {movieData
           .filter((item) => !item.isTrending)
+          .slice(0, 10)
           .map((item) => (
             <CarouselItem
               className="sm:basis-1/4 md:basis-1/3 lg:basis-1/5 relative w-[50vh] h-[60vh] sm:h-[40vh] md:h-[50vh] lg:h-[50vh]"
