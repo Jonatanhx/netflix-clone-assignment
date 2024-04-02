@@ -44,9 +44,9 @@ export default function MoviePage({ params }: { params: { slug: string } }) {
       <Card className="bg-[#0E0E0E] text-white">
         <CardHeader>
           <CardTitle>{movie.title}</CardTitle>
-          <p>{movie.year}</p>
+          <p>Released: {movie.year}</p>
           <p>{movie.genre}</p>
-          <p>Rated {movie.rating}</p>
+          <p>Rated: {movie.rating}</p>
           <p>Features: {movie.actors.join(", ")}</p>
           <CardDescription>{movie.synopsis}</CardDescription>
         </CardHeader>
