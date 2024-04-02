@@ -24,7 +24,7 @@ export default function TrendingCarousel() {
           .filter((item) => item.isTrending)
           .map((item) => (
             <CarouselItem
-              className="sm:basis-1/4 md:basis-1/3 lg:basis-1/5 relative w-[50vh] h-[60vh] sm:h-[40vh] md:h-[50vh] lg:h-[50vh]"
+              className="sm:basis-1/4 md:basis-1/3 lg:basis-1/5 relative w-[50vh] h-[60vh] sm:h-[40vh] md:h-[50vh] lg:h-[60vh]"
               key={item.slug}
             >
               <div className="relative w-full h-full">

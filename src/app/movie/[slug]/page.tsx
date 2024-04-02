@@ -24,14 +24,14 @@ export default function MoviePage({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <main className="flex flex-col justify-center">
+    <main className="flex flex-col sm:flex-row md:flex-row">
       <div className="flex flex-row relative">
         <div className="flex-1"></div>
-        <div className="relative">
+        <div className="relative mr-2 ml-2">
           <Image
             src={movie.thumbnail}
-            width={640}
-            height={320}
+            width={320}
+            height={640}
             alt={movie.title}
           />
           <BookmarkButton
