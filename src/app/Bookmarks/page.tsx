@@ -13,34 +13,43 @@ export default function Bookmarks() {
   const { bookmarkedMovies, toggleBookmark } = bookmarkContext;
 
   return (
-    <main className="container mx-auto py-8">
+    <div className="container mx-auto py-8">
       <h1 className="text-2xl font-bold mb-4 text-white">Bookmarked Movies</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {bookmarkedMovies.map((item) => (
-          <div className="relative border-solid" key={item.slug}>
-            <div className="relative">
-              <Link key={item.title} href={`/movie/${item.slug}`}>
-                <Image
-                  src={item.thumbnail}
-                  width={320}
-                  height={640}
-                  alt={item.title}
-                  quality={5}
-                  priority
-                  className="object-cover w-full h-full"
-                ></Image>
-              </Link>
-              <BookmarkButton
-                isBookmarked={bookmarkedMovies.some(
-                  (m) => m.slug === item.slug
-                )}
-                onClick={() => toggleBookmark(item)}
-              />
-            </div>
-            <h3 className="text-white font-bold p-2">{item.title}</h3>
-          </div>
-        ))}
-      </div>
-    </main>
+      {bookmarkedMovies.length > 0 ? (
+        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {bookmarkedMovies.map((movie) => (
+            <li
+              key={movie.slug}
+              className="bg-[#0A0A0A] text-white p-4 rounded-md shadow-md"
+            >
+              <div className="relative">
+                <Link key={movie.title} href={`/movie/${movie.slug}`}>
+                  <Image
+                    src={movie.thumbnail}
+                    alt={movie.title}
+                    width={640}
+                    height={320}
+                  />
+                </Link>
+                <BookmarkButton
+                  isBookmarked={bookmarkedMovies.some(
+                    (m) => m.slug === movie.slug
+                  )}
+                  onClick={() => toggleBookmark(movie)}
+                />
+              </div>
+              <h3 className="text-lg font-bold pt-2">{movie.title}</h3>
+              <p className="text-gray-400">{movie.genre}</p>
+              <div className="flex flex-col">
+                <p className="text-gray-400">Released: {movie.year}</p>
+                <p className="text-gray-400">Rated: {movie.rating} </p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="text-white">No bookmarked movies.</p>
+      )}
+    </div>
   );
 }
