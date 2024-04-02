@@ -56,8 +56,12 @@ export default function SearchResults() {
                   onClick={() => toggleBookmark(movie)}
                 />
               </div>
-              <h3 className="text-lg font-bold">{movie.title}</h3>
+              <h3 className="text-lg font-bold pt-2">{movie.title}</h3>
               <p className="text-gray-400">{movie.genre}</p>
+              <div className="flex flex-col">
+                <p className="text-gray-400">Released: {movie.year}</p>
+                <p className="text-gray-400">Rated: {movie.rating} </p>
+              </div>
             </li>
           ))}
         </ul>

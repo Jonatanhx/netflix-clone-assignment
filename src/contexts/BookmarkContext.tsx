@@ -5,6 +5,9 @@ interface Movie {
   slug: string;
   thumbnail: string;
   title: string;
+  genre: string;
+  year: number;
+  rating: string;
 }
 
 interface BookmarkContextType {
