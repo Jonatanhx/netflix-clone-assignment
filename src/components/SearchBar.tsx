@@ -47,7 +47,7 @@ export default function SearchBar() {
         </form>
       ) : (
         <div className="cursor-pointer" onClick={handleSearchClick}>
-          <MagnifyingGlassIcon className="size-11 text-white" />
+          <MagnifyingGlassIcon className="size-11 mt-1 text-white" />
         </div>
       )}
     </div>
