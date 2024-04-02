@@ -5,7 +5,13 @@ import Link from "next/link";
 import { useContext } from "react";
 import movieData from "../data/movieData";
 import BookmarkButton from "./BookmarkButton";
-import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "./ui/carousel";
 
 export default function RecommendedCarousel() {
   const bookmarkContext = useContext(BookmarkContext);
@@ -50,6 +56,12 @@ export default function RecommendedCarousel() {
             </div>
           ))}
       </CarouselContent>
+      <CarouselPrevious className="absolute top-1/2 transform -translate-y-1/2 left-4 z-10 size-14 border-black text-black text-4xl hover:text-red-600 transition-colors duration-300">
+        &#8249;
+      </CarouselPrevious>
+      <CarouselNext className="absolute top-1/2 transform -translate-y-1/2 right-4 z-10 size-14 border-black text-black text-4xl hover:text-red-600 transition-colors duration-300">
+        &#8250;
+      </CarouselNext>
     </Carousel>
   );
 }

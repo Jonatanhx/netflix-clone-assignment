@@ -7,7 +7,13 @@ import Link from "next/link";
 import { useContext, useState } from "react";
 import movies from "../movies.json";
 import BookmarkButton from "./BookmarkButton";
-import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "./ui/carousel";
 
 export default function TrendingCarousel() {
   const [data, setData] = useState(movies);
@@ -52,8 +58,12 @@ export default function TrendingCarousel() {
             </div>
           ))}
       </CarouselContent>
-      {/*       <CarouselPrevious />
-      <CarouselNext /> */}
+      <CarouselPrevious className="absolute top-1/2 transform -translate-y-1/2 left-4 z-10 size-14 border-black text-black text-4xl hover:text-red-600 transition-colors duration-300">
+        &#8249;
+      </CarouselPrevious>
+      <CarouselNext className="absolute top-1/2 transform -translate-y-1/2 right-4 z-10 size-14 border-black text-black text-4xl hover:text-red-600 transition-colors duration-300">
+        &#8250;
+      </CarouselNext>
     </Carousel>
   );
 }
