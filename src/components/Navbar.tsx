@@ -25,13 +25,16 @@ export default function Navbar() {
         </h1>
       </Link>
       <div className="flex flex-1 justify-between">
-        <div className="flex ml-8 items-end">
+        <div className="flex flex-1 justify-end items-center">
+          <p className={`mr-2 ${isDarkMode ? "text-white" : "text-black"}`}>
+            Toggle dark mode
+          </p>
           <Switch
             data-state={isDarkMode ? "checked" : "unchecked"}
             onCheckedChange={toggleDarkMode}
           />
         </div>
-        <div className="flex flex-row">
+        <div className="flex flex-row justify-end">
           <Link href="/">
             <HomeIcon
               className={`size-11 ${isDarkMode ? "text-white" : "text-black"}`}

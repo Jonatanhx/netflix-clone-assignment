@@ -2,6 +2,7 @@
 import { BookmarkContext } from "@/contexts/BookmarkContext";
 import movieData from "@/data/movieData";
 
+import { useDarkMode } from "@/contexts/DarkModeContext";
 import Image from "next/image";
 import Link from "next/link";
 import { useContext, useState } from "react";
@@ -16,6 +17,7 @@ import {
 } from "./ui/carousel";
 
 export default function TrendingCarousel() {
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
   const [data, setData] = useState(movies);
   const bookmarkContext = useContext(BookmarkContext);
   if (!bookmarkContext) {
@@ -50,7 +52,11 @@ export default function TrendingCarousel() {
                 </div>
               </CarouselItem>
               <CarouselItem className="mt-2">
-                <div className="text-white flex mr-1 ml-1 justify-between">
+                <div
+                  className={` flex mr-1 ml-1 justify-between ${
+                    isDarkMode ? "text-white" : "text-black"
+                  }`}
+                >
                   <p className="mr-2">Released: {item.year}</p>
                   <p className="mr-2">Rated: {item.rating}</p>
                 </div>

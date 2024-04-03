@@ -1,5 +1,6 @@
 "use client";
 import { BookmarkContext } from "@/contexts/BookmarkContext";
+import { useDarkMode } from "@/contexts/DarkModeContext";
 import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
@@ -14,6 +15,7 @@ import {
 } from "./ui/carousel";
 
 export default function RecommendedCarousel() {
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
   const bookmarkContext = useContext(BookmarkContext);
   if (!bookmarkContext) {
     return null;
@@ -48,7 +50,11 @@ export default function RecommendedCarousel() {
                 </div>
               </CarouselItem>
               <CarouselItem className="mt-2">
-                <div className="text-white flex mr-1 ml-1 justify-between">
+                <div
+                  className={` flex mr-1 ml-1 justify-between ${
+                    isDarkMode ? "text-white" : "text-black"
+                  }`}
+                >
                   <p className="mr-2">Released: {item.year}</p>
                   <p className="mr-2">Rated: {item.rating}</p>
                 </div>
