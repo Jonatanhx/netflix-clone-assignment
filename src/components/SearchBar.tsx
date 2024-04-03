@@ -1,3 +1,4 @@
+import { useDarkMode } from "@/contexts/DarkModeContext";
 import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
@@ -7,6 +8,7 @@ export default function SearchBar() {
   const [showInput, setShowInput] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   useEffect(() => {
     const term = searchParams.get("searchTerm") || "";
@@ -47,7 +49,9 @@ export default function SearchBar() {
         </form>
       ) : (
         <div className="cursor-pointer" onClick={handleSearchClick}>
-          <MagnifyingGlassIcon className="size-11 text-white" />
+          <MagnifyingGlassIcon
+            className={`size-11 ${isDarkMode ? "text-white" : "text-black"}`}
+          />
         </div>
       )}
     </div>

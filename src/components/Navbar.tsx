@@ -1,30 +1,47 @@
 "use client";
 import { Switch } from "@/components/ui/switch";
+import { useDarkMode } from "@/contexts/DarkModeContext";
 import { HomeIcon } from "@heroicons/react/16/solid";
 import { BookmarkPlusIcon } from "lucide-react";
 import Link from "next/link";
 import SearchBar from "./SearchBar";
 
 export default function Navbar() {
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
+
   return (
-    <header className="bg-[#0A0A0A] flex items-center p-4">
+    <header
+      className={`flex items-center p-4 ${
+        isDarkMode ? "bg-black" : "bg-white"
+      }`}
+    >
       <Link href="/">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl text-red-700 font-bold pl-4">
+        <h1
+          className={`text-4xl md:text-5xl lg:text-6xl font-bold pl-4 ${
+            isDarkMode ? "text-red-700" : "text-red-700"
+          }`}
+        >
           Netflix
         </h1>
       </Link>
       <div className="flex flex-1 justify-between">
         <div className="flex ml-8 items-end">
-          <p className="text-white mr-5">Enable parental filter: </p>
-          <Switch></Switch>
+          <Switch
+            data-state={isDarkMode ? "checked" : "unchecked"}
+            onCheckedChange={toggleDarkMode}
+          />
         </div>
         <div className="flex flex-row">
           <Link href="/">
-            <HomeIcon className="size-11 text-white"></HomeIcon>
+            <HomeIcon
+              className={`size-11 ${isDarkMode ? "text-white" : "text-black"}`}
+            ></HomeIcon>
           </Link>
 
           <Link href="/bookmarks">
-            <BookmarkPlusIcon className="size-11 text-white flex"></BookmarkPlusIcon>
+            <BookmarkPlusIcon
+              className={`size-11 ${isDarkMode ? "text-white" : "text-black"}`}
+            ></BookmarkPlusIcon>
           </Link>
 
           <SearchBar></SearchBar>
