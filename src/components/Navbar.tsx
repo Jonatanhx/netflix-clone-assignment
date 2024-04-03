@@ -4,6 +4,7 @@ import { useDarkMode } from "@/contexts/DarkModeContext";
 import { HomeIcon } from "@heroicons/react/16/solid";
 import { BookmarkPlusIcon } from "lucide-react";
 import Link from "next/link";
+import { Suspense } from "react";
 import SearchBar from "./SearchBar";
 
 export default function Navbar() {
@@ -46,8 +47,9 @@ export default function Navbar() {
               className={`size-11 ${isDarkMode ? "text-white" : "text-black"}`}
             ></BookmarkPlusIcon>
           </Link>
-
-          <SearchBar></SearchBar>
+          <Suspense fallback={<div>Loading...</div>}>
+            <SearchBar></SearchBar>
+          </Suspense>
         </div>
       </div>
     </header>
