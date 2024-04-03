@@ -4,8 +4,10 @@ This is my Netflix "clone" website, a skeleton lookalike of the popular streamin
 
 1. Clone this repository.
    
-run git clone https://github.com/Jonatanhx/netflix-clone-assignment
-
+Run the clone command in your terminal
+```bash
+git clone https://github.com/Jonatanhx/netflix-clone-assignment
+```
 1. Run the development server:
 
 ```bash
