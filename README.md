@@ -8,7 +8,7 @@ Run the clone command in your terminal
 ```bash
 git clone https://github.com/Jonatanhx/netflix-clone-assignment
 ```
-1. Run the development server:
+2. Run the development server:
 
 ```bash
 npm run dev
