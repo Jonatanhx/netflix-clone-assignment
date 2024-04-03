@@ -1,6 +1,7 @@
 "use client";
 import BookmarkButton from "@/components/BookmarkButton";
 import { BookmarkContext } from "@/contexts/BookmarkContext";
+import { useDarkMode } from "@/contexts/DarkModeContext";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
@@ -8,6 +9,7 @@ import { useContext, useEffect, useState } from "react";
 import movieData from "../../../data/movieData";
 
 export default function SearchResults() {
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
   const [searchTerm, setSearchTerm] = useState("");
   const params = useParams();
   const router = useRouter();
@@ -29,8 +31,14 @@ export default function SearchResults() {
   );
 
   return (
-    <div className="container mx-auto py-8">
-      <h1 className="text-2xl font-bold mb-4 text-white">
+    <main
+      className={`pl-8 pr-8 h-screen ${isDarkMode ? "bg-black" : "bg-white"}`}
+    >
+      <h1
+        className={`text-2xl font-bold mb-4 ${
+          isDarkMode ? "text-white" : "text-black"
+        }`}
+      >
         Results for {"'" + searchTerm + "'"}
       </h1>
       {filteredMovies.length > 0 ? (
@@ -68,6 +76,6 @@ export default function SearchResults() {
       ) : (
         <p className="text-white">No movies found.</p>
       )}
-    </div>
+    </main>
   );
 }

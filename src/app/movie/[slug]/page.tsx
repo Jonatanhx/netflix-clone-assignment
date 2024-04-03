@@ -1,56 +1,53 @@
 "use client";
 import BookmarkButton from "@/components/BookmarkButton";
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { BookmarkContext } from "@/contexts/BookmarkContext";
+import { useDarkMode } from "@/contexts/DarkModeContext";
 import Image from "next/image";
 import { useContext } from "react";
 import movieData from "../../../../src/data/movieData";
 
 export default function MoviePage({ params }: { params: { slug: string } }) {
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
   const movie = movieData.find((m) => m.slug === params.slug);
   const bookmarkContext = useContext(BookmarkContext);
   if (!bookmarkContext) {
     return null;
   }
   const { bookmarkedMovies, toggleBookmark } = bookmarkContext;
-
   if (!movie) {
     return <div>Movie not found</div>;
   }
 
   return (
-    <main className="flex flex-col sm:flex-row md:flex-row">
-      <div className="flex flex-row relative">
-        <div className="flex-1"></div>
-        <div className="relative mr-2 ml-2">
+    <main
+      className={`flex flex-col h-screen p-6 ${
+        isDarkMode ? "bg-black" : "bg-white"
+      }`}
+    >
+      <div className="flex flex-col sm:flex-row md:flex-row justify-center items-center bg-[#0A0A0A]">
+        <div className="relative w-320 h-640 mr-8 sm:mr-0 sm:mb-8 md:mr-8 md:mb-0">
           <Image
             src={movie.thumbnail}
             width={320}
             height={640}
             alt={movie.title}
+            className="w-full h-full object-cover"
           />
           <BookmarkButton
             isBookmarked={bookmarkedMovies.some((m) => m.slug === movie.slug)}
             onClick={() => toggleBookmark(movie)}
           />
         </div>
-        <div className="flex-1"></div>
+        <div className="flex-1 sm:mt-0 md:mt-0 p-4 text-white">
+          <h2 className="text-2xl sm:text-4xl font-bold mb-4">{movie.title}</h2>
+          <p className="mb-2">Released: {movie.year}</p>
+          <p className="mb-2">{movie.genre}</p>
+          <p className="mb-2">Rated: {movie.rating}</p>
+          <p className="mb-2">Features: {movie.actors.join(", ")}</p>
+          <p className="mb-4 text-gray-400">{movie.synopsis}</p>
+        </div>
+        <div className="flex flex-1"></div>
       </div>
-      <Card className="bg-[#0E0E0E] text-white">
-        <CardHeader>
-          <CardTitle>{movie.title}</CardTitle>
-          <p>Released: {movie.year}</p>
-          <p>{movie.genre}</p>
-          <p>Rated: {movie.rating}</p>
-          <p>Features: {movie.actors.join(", ")}</p>
-          <CardDescription>{movie.synopsis}</CardDescription>
-        </CardHeader>
-      </Card>
     </main>
   );
 }

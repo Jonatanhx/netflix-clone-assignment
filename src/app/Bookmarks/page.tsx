@@ -1,11 +1,13 @@
 "use client";
 import BookmarkButton from "@/components/BookmarkButton";
 import { BookmarkContext } from "@/contexts/BookmarkContext";
+import { useDarkMode } from "@/contexts/DarkModeContext";
 import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
 
 export default function Bookmarks() {
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
   const bookmarkContext = useContext(BookmarkContext);
   if (!bookmarkContext) {
     return null;
@@ -13,10 +15,18 @@ export default function Bookmarks() {
   const { bookmarkedMovies, toggleBookmark } = bookmarkContext;
 
   return (
-    <div className="container mx-auto py-8">
-      <h1 className="text-2xl font-bold mb-4 text-white">Bookmarked Movies</h1>
+    <main
+      className={`pl-8 pr-8 h-screen ${isDarkMode ? "bg-black" : "bg-white"}`}
+    >
+      <h1
+        className={`text-2xl font-bold mb-4 ${
+          isDarkMode ? "text-white" : "text-black"
+        }`}
+      >
+        Bookmarked Movies:
+      </h1>
       {bookmarkedMovies.length > 0 ? (
-        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <ul className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {bookmarkedMovies.map((movie) => (
             <li
               key={movie.slug}
@@ -50,6 +60,6 @@ export default function Bookmarks() {
       ) : (
         <p className="text-white">No bookmarked movies.</p>
       )}
-    </div>
+    </main>
   );
 }

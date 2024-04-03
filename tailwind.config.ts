@@ -1,13 +1,13 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
-const config = {
-  darkMode: ["class"],
+const config: Config = {
+  darkMode: "class",
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -19,40 +19,98 @@ const config = {
     },
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        border: {
+          light: "hsl(var(--border))",
+          dark: "hsl(var(--border-dark))",
+        },
+        input: {
+          light: "hsl(var(--input))",
+          dark: "hsl(var(--input-dark))",
+        },
+        ring: {
+          light: "hsl(var(--ring))",
+          dark: "hsl(var(--ring-dark))",
+        },
+        background: {
+          light: "hsl(var(--background))",
+          dark: "hsl(var(--background-dark))",
+        },
+        foreground: {
+          light: "hsl(var(--foreground))",
+          dark: "hsl(var(--foreground-dark))",
+        },
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          light: {
+            DEFAULT: "hsl(var(--primary))",
+            foreground: "hsl(var(--primary-foreground))",
+          },
+          dark: {
+            DEFAULT: "hsl(var(--primary-dark))",
+            foreground: "hsl(var(--primary-foreground-dark))",
+          },
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          light: {
+            DEFAULT: "hsl(var(--secondary))",
+            foreground: "hsl(var(--secondary-foreground))",
+          },
+          dark: {
+            DEFAULT: "hsl(var(--secondary-dark))",
+            foreground: "hsl(var(--secondary-foreground-dark))",
+          },
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          light: {
+            DEFAULT: "hsl(var(--destructive))",
+            foreground: "hsl(var(--destructive-foreground))",
+          },
+          dark: {
+            DEFAULT: "hsl(var(--destructive-dark))",
+            foreground: "hsl(var(--destructive-foreground-dark))",
+          },
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          light: {
+            DEFAULT: "hsl(var(--muted))",
+            foreground: "hsl(var(--muted-foreground))",
+          },
+          dark: {
+            DEFAULT: "hsl(var(--muted-dark))",
+            foreground: "hsl(var(--muted-foreground-dark))",
+          },
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          light: {
+            DEFAULT: "hsl(var(--accent))",
+            foreground: "hsl(var(--accent-foreground))",
+          },
+          dark: {
+            DEFAULT: "hsl(var(--accent-dark))",
+            foreground: "hsl(var(--accent-foreground-dark))",
+          },
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          light: {
+            DEFAULT: "hsl(var(--popover))",
+            foreground: "hsl(var(--popover-foreground))",
+          },
+          dark: {
+            DEFAULT: "hsl(var(--popover-dark))",
+            foreground: "hsl(var(--popover-foreground-dark))",
+          },
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          light: {
+            DEFAULT: "hsl(var(--card))",
+            foreground: "hsl(var(--card-foreground))",
+          },
+          dark: {
+            DEFAULT: "hsl(var(--card-dark))",
+            foreground: "hsl(var(--card-foreground-dark))",
+          },
         },
       },
+
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -75,6 +133,6 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+};
 
-export default config
+export default config;
