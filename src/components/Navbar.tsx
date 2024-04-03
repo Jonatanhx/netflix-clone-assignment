@@ -11,7 +11,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`flex items-center p-4 ${
+      className={`flex items-center p-4 border-b-2 ${
         isDarkMode ? "bg-black" : "bg-white"
       }`}
     >

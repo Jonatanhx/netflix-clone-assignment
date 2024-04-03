@@ -26,8 +26,8 @@ export default function TrendingCarousel() {
   const { toggleBookmark, bookmarkedMovies } = bookmarkContext;
 
   return (
-    <Carousel>
-      <CarouselContent className="pl-5">
+    <Carousel className="border-2 border-black">
+      <CarouselContent className="pl-4">
         {movieData
           .filter((item) => item.isTrending)
           .map((item) => (
@@ -52,7 +52,7 @@ export default function TrendingCarousel() {
               </CarouselItem>
               <CarouselItem>
                 <div
-                  className={` flex mr-1 ml-1 justify-between ${
+                  className={` flex m-1 justify-between ${
                     isDarkMode ? "text-white" : "text-black"
                   }`}
                 >
@@ -63,10 +63,10 @@ export default function TrendingCarousel() {
             </div>
           ))}
       </CarouselContent>
-      <CarouselPrevious className="absolute top-1/2 transform -translate-y-1/2 left-4 z-10 size-14 border-black text-black text-4xl hover:text-red-600 transition-colors duration-300">
+      <CarouselPrevious className="absolute top-1/2 transform -translate-y-1/2 left-4 z-10 size-14 bg-white border-black text-black text-4xl hover:text-red-600 transition-colors duration-300">
         &#8249;
       </CarouselPrevious>
-      <CarouselNext className="absolute top-1/2 transform -translate-y-1/2 right-4 z-10 size-14 border-black text-black text-4xl hover:text-red-600 transition-colors duration-300">
+      <CarouselNext className="absolute top-1/2 transform -translate-y-1/2 right-4 z-10 size-14 bg-white border-black text-black text-4xl hover:text-red-600 transition-colors duration-300">
         &#8250;
       </CarouselNext>
     </Carousel>
