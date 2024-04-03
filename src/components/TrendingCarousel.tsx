@@ -27,20 +27,19 @@ export default function TrendingCarousel() {
 
   return (
     <Carousel>
-      <CarouselContent>
+      <CarouselContent className="pl-5">
         {movieData
           .filter((item) => item.isTrending)
           .map((item) => (
             <div key={item.slug}>
-              <CarouselItem className="sm:basis-1/4 md:basis-1/3 lg:basis-1/5 relative w-[50vh] h-[60vh] sm:h-[40vh] md:h-[50vh] lg:h-[60vh]">
-                <div className="relative w-full h-full">
+              <CarouselItem className="sm:basis-1/4 md:basis-1/3 lg:basis-1/5 w-[40vh] h-[60vh]">
+                <div className="relative">
                   <Link key={item.title} href={`/movie/${item.slug}`}>
                     <Image
                       src={item.thumbnail}
                       alt={item.title}
-                      quality={5}
-                      priority
-                      fill
+                      width={640}
+                      height={320}
                     ></Image>
                   </Link>
                   <BookmarkButton
@@ -51,7 +50,7 @@ export default function TrendingCarousel() {
                   />
                 </div>
               </CarouselItem>
-              <CarouselItem className="mt-2">
+              <CarouselItem>
                 <div
                   className={` flex mr-1 ml-1 justify-between ${
                     isDarkMode ? "text-white" : "text-black"

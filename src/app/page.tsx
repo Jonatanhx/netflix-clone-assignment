@@ -7,7 +7,7 @@ export default function Home() {
   const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   return (
-    <main className={`${isDarkMode ? "bg-black" : "bg-white"}`}>
+    <main className={`p-7 ${isDarkMode ? "bg-black" : "bg-white"}`}>
       <h1
         className={`text-2xl p-2 font-bold
         ${isDarkMode ? "text-white" : "text-black"}`}

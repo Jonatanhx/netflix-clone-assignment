@@ -15,7 +15,9 @@ export default function Bookmarks() {
   const { bookmarkedMovies, toggleBookmark } = bookmarkContext;
 
   return (
-    <main className={`pl-8 pr-8 ${isDarkMode ? "bg-black" : "bg-white"}`}>
+    <main
+      className={`pl-8 pr-8 h-screen ${isDarkMode ? "bg-black" : "bg-white"}`}
+    >
       <h1
         className={`text-2xl font-bold mb-4 ${
           isDarkMode ? "text-white" : "text-black"
@@ -24,7 +26,7 @@ export default function Bookmarks() {
         Bookmarked Movies:
       </h1>
       {bookmarkedMovies.length > 0 ? (
-        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <ul className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {bookmarkedMovies.map((movie) => (
             <li
               key={movie.slug}
